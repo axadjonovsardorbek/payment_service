@@ -1,5 +1,5 @@
 CREATE TYPE IF NOT EXISTS payment_method AS ENUM('naqd', 'karta', 'online');
-CREATE TYPE IF NOT EXISTS payment_status AS ENUM('tasdiqlangan', 'bekor qilingan', "to'langan");
+CREATE TYPE IF NOT EXISTS payment_status AS ENUM('tasdiqlangan', 'bekor qilingan', 'to''langan');
 
 CREATE TABLE IF NOT EXISTS transactions (
     id UUID PRIMARY KEY,
