@@ -1,5 +1,13 @@
-CREATE TYPE IF NOT EXISTS payment_method AS ENUM('naqd', 'karta', 'online');
-CREATE TYPE IF NOT EXISTS payment_status AS ENUM('tasdiqlangan', 'bekor qilingan', 'to''langan');
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'payment_method') THEN
+        CREATE TYPE payment_method AS ENUM('naqd', 'karta', 'online');
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'payment_status') THEN
+        CREATE TYPE payment_status AS ENUM('tasdiqlangan', 'bekor qilingan', 'to''langan');
+    END IF;
+END $$;
 
 CREATE TABLE IF NOT EXISTS transactions (
     id UUID PRIMARY KEY,
