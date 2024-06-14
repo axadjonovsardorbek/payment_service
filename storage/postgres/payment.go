@@ -59,16 +59,22 @@ func (pr *PaymentRepo) Create(payment *p.PaymentCreateReq)(*p.PaymentGetByIdResp
 }
 
 func (pr *PaymentRepo) GetById(id *p.PaymentGetByIdReq)(*p.PaymentGetByIdResp, error){
-	// |---------------------------------------------------------------|
-	// |---------------------------------------------------------------|
-	// |---------------------------------------------------------------|
-	// |---------------------------------------------------------------|
-	// |---------------------------------------------------------------|
-	// |---------------------------------------------------------------|
-	// |---------------------------------------------------------------|
-	// |---------------------------------------------------------------|
-	// |---------------------------------------------------------------|
-	return nil, nil
+	res := p.PaymentGetByIdResp{}
+
+    query := `SELECT id, reservation_id, amount, payment_method, payment_status FROM transactions WHERE id=$1`
+	row := pr.db.QueryRow(query, id.Id)
+	err := row.Scan(
+        &res.Id, 
+        &res.ReservationId,
+        &res.Amount,
+        &res.PaymentMethod,
+		&res.PaymentStatus,
+    )
+	if err!= nil {
+        pr.Logger.ERROR.Println("Error while getting transaction")
+        return nil, err
+    }
+	return &res, nil
 }
 
 func (pr *PaymentRepo) Update(payment *p.PaymentUpdateReq)(*p.PaymentGetByIdResp, error){
