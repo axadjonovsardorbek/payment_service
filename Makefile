@@ -13,10 +13,10 @@ proto-gen:
 	./scripts/gen-proto.sh ${CURRENT_DIR}
 	
 migrate_up:
-	migrate -path migrations -database postgres://postgres:1111@localhost:5432/payment?sslmode=disable -verbose up
+	migrate -path migrations -database postgres://postgres:feruza1727@localhost:5432/payment?sslmode=disable -verbose up
 
 migrate_down:
-	migrate -path migrations -database postgres://postgres:1111@localhost:5432/payment?sslmode=disable -verbose down
+	migrate -path migrations -database postgres://postgres:feruza1727@localhost:5432/payment?sslmode=disable -verbose down
 
 migrate_force:
 	migrate -path migrations -database postgres://postgres:1111@localhost:5432/payment?sslmode=disable -verbose force 1

@@ -18,3 +18,5 @@
 [ERROR]  2024/06/11 19:23:32 reservation.go:215: Error while updating reservation
 [ERROR]  2024/06/11 19:23:43 reservation.go:215: Error while updating reservation
 [ERROR]  2024/06/11 19:24:04 reservation.go:215: Error while updating reservation
+[INFO]  2024/06/14 17:20:23 payment.go:56: Successfully created transaction
+[INFO]  2024/06/14 18:01:23 payment.go:56: Successfully created transaction
